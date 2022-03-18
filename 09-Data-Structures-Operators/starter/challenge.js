@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 ///////////////////////////////
 // Challenge 4
 
@@ -9,13 +11,18 @@ document.body.append(document.createElement("button"));
 const buttonEl = document.querySelector("button");
 
 buttonEl.addEventListener("click", function () {
-  const input = document.querySelector("textarea").value;
-  const inputs = input.split("\n");
-  for (const i of inputs) {
-    const inputArr = i.toLowerCase().trim().split("_");
-    //inputArr[1].replace();
+  const text = document.querySelector("textarea").value;
+  const rows = text.split("\n");
+
+  for (const [i, row] of rows.entries()) {
+    const [firstPart, secondPart] = row.toLowerCase().trim().split('_');
+    const secondPartUpper = secondPart[0].toUpperCase() + secondPart.slice(1) ;
+    const result = firstPart + secondPartUpper;
+    console.log(`${result.padEnd(20)}${"✅".repeat(i + 1)}`);
   }
+
 });
+
 
 /*
 
@@ -56,7 +63,7 @@ for (const [index, event] of gameEvents) {
   console.log(`[${periodStr} HALF] ${index}: ${event}`);
 }
 
-
+/*
 
 ///////////////////////////////
 // Challenge 2
